@@ -8,6 +8,10 @@ server.get('/', (req, res) => {
 
 //custom middleware
 
-function logger(req, res, next) {}
+function logger(req, res, next) {
+  req.requestTime=Date.now();
+  console.log(`${req.method} to ${req.originalUrl} made at ${req.requestTime}`);
+  next();
+}
 
 module.exports = server;
